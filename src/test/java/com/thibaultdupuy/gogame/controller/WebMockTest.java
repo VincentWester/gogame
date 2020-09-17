@@ -1,7 +1,9 @@
 package com.thibaultdupuy.gogame.controller;
 
+import static org.hamcrest.CoreMatchers.containsString;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.junit.jupiter.api.Test;
@@ -27,8 +29,9 @@ public class WebMockTest {
 		Game game = new Game();
 		
 		when(service.startGame()).thenReturn(game);
-		this.mockMvc.perform(get("/gogame")).andExpect(status().isOk());
-				//.andExpect(content().string(containsString("Hello, Mock")));
+		this.mockMvc.perform(get("/gogame")).andExpect(status().isOk())
+				.andExpect(content().string(containsString("turn")));
+		
 	}
 
 }
