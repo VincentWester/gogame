@@ -10,6 +10,10 @@ import javax.persistence.OneToMany;
 @Entity(name = "game")
 public class Game {
 	
+	public Game() {
+		turn = new Turn();
+	}
+	
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;

@@ -29,8 +29,11 @@ public class WebMockTest {
 		Game game = new Game();
 		
 		when(service.startGame()).thenReturn(game);
-		this.mockMvc.perform(get("/gogame")).andExpect(status().isOk())
-				.andExpect(content().string(containsString("turn")));
+		this.mockMvc.perform(get("/gogame"))
+		        .andExpect(status().isOk())
+				.andExpect(content().string(containsString("turn")))
+				.andExpect(content().string(containsString("color")))
+				.andExpect(content().string(containsString("numero")));
 		
 	}
 

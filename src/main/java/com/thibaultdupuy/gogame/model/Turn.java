@@ -7,6 +7,11 @@ import javax.persistence.Id;
 
 public class Turn {
 	
+	public Turn() {
+		this.color = 0;
+		this.numero = 1;
+	}
+	
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
