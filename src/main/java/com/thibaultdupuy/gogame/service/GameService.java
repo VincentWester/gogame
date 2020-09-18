@@ -7,8 +7,8 @@ import com.thibaultdupuy.gogame.model.Game;
 @Service
 public class GameService {
 
-	public Game startGame() {
-		return new Game();
+	public Game startGame(Integer size) {
+		return new Game(size);
 	}
 
 }

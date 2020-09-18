@@ -2,33 +2,24 @@ package com.thibaultdupuy.gogame.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity(name = "game")
 public class Game {
 	
-	public Game() {
+	public Game(Integer size) {
 		turn = new Turn();
+		board = new Board(size);
 	}
-	
-    @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    private Long id;
     
     @Column(name="turn")
-    @OneToMany
+    @ManyToOne
     private Turn turn;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
+    
+    @Column(name="board")
+    @OneToMany    
+    private Board board;
 
 	public Turn getTurn() {
 		return turn;
@@ -36,6 +27,14 @@ public class Game {
 
 	public void setTurn(Turn turn) {
 		this.turn = turn;
+	}
+
+	public Board getBoard() {
+		return board;
+	}
+
+	public void setBoard(Board board) {
+		this.board = board;
 	}
     
     
