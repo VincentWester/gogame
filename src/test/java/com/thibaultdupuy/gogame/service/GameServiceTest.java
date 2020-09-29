@@ -28,17 +28,17 @@ public class GameServiceTest {
 	public void shouldCreateAGameWith9SizeBoard() {
 		Game game = service.startGame(9);
 		
-		assertEquals(game.getBoard().getCases().size(), 81);
+		assertEquals(game.getBoard().size(), 81);
 		for (int i=1; i<=9; i++) {
 			final int abscisse = i;
-			Stream<Case> streamCases = game.getBoard().getCases().stream();
+			Stream<Case> streamCases = game.getBoard().stream();
 			assertEquals(streamCases.filter((Case c) -> c.getAbscisse() == abscisse).count(), 9);
 		}
 		
 
 		for (int i=1; i<=9; i++) {
 			final int ordonnee = i;
-			Stream<Case> streamCases = game.getBoard().getCases().stream();
+			Stream<Case> streamCases = game.getBoard().stream();
 			assertEquals(streamCases.filter((Case c) -> c.getOrdonnee() == ordonnee).count(), 9);
 		}
 	}
